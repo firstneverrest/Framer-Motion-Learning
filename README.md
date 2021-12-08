@@ -92,3 +92,15 @@ Animate from start position to end position with animation types: spring (bounce
 ```
 
 If the type is `string`, you can add `stiffness` to modify bouncing.
+
+## Hover animation
+
+```js
+<motion.button
+  whileHover={{ backgroundColor: '#000' }}
+  transition={{ duration: 0.5 }}
+  className={classes.button}
+>
+  Go to Button Showcase
+</motion.button>
+```
