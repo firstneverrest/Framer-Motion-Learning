@@ -29,6 +29,22 @@ const Home = () => {
     },
   };
 
+  const circleVariants = {
+    circle: {
+      scale: [1, 2, 2, 1, 1],
+      rotate: [0, 0, 270, 270, 0],
+      borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+      transition: {
+        delay: 1,
+        duration: 4,
+        times: [0, 0.2, 0.5, 0.8, 1],
+        // yoyo: Infinity,
+        repeat: Infinity,
+        repeatDelay: 1,
+      },
+    },
+  };
+
   return (
     <motion.div
       variants={containerVariants}
@@ -37,18 +53,11 @@ const Home = () => {
       className={classes.container}
     >
       <h2>Framer Motion animation</h2>
-      <motion.p variants={childVariants}>Child 1</motion.p>
-      <motion.p variants={childVariants}>Child 2</motion.p>
-      <Link to="/button">
-        <motion.button
-          variants={childVariants}
-          whileHover={{ backgroundColor: '#000' }}
-          transition={{ duration: 0.5 }}
-          className={classes.button}
-        >
-          Go to Button Showcase
-        </motion.button>
-      </Link>
+      <motion.div
+        variants={circleVariants}
+        animate="circle"
+        className={classes.circle}
+      ></motion.div>
     </motion.div>
   );
 };
