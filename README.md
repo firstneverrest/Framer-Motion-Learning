@@ -203,3 +203,41 @@ const Home = () => {
   );
 };
 ```
+
+## Keyframe
+
+Keyframe is used to animate through each value in sequence.
+
+```js
+const circleVariants = {
+  circle: {
+    scale: [1, 2, 2, 1, 1],
+    rotate: [0, 0, 270, 270, 0],
+    borderRadius: ['20%', '20%', '50%', '50%', '20%'],
+    transition: {
+      delay: 1,
+      duration: 4,
+      times: [0, 0.2, 0.5, 0.8, 1],
+      // yoyo: Infinity, yoyo: 3
+      repeat: Infinity,
+      repeatDelay: 1,
+    },
+  },
+};
+
+return (
+  <motion.div
+    variants={containerVariants}
+    initial="hidden"
+    animate="visible"
+    className={classes.container}
+  >
+    <h2>Framer Motion animation</h2>
+    <motion.div
+      variants={circleVariants}
+      animate="circle"
+      className={classes.circle}
+    ></motion.div>
+  </motion.div>
+);
+```
