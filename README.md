@@ -104,3 +104,102 @@ If the type is `string`, you can add `stiffness` to modify bouncing.
   Go to Button Showcase
 </motion.button>
 ```
+
+## Variants
+
+Variants help creating animations that propagate throughout the DOM, and orchestrate those animations in a declarative way. It makes our code cleaner and be reusable.
+
+```js
+const Home = () => {
+  const containerVariants = {
+    visible: {
+      opacity: 1,
+      x: 100,
+      transition: {
+        delay: 0.2,
+        duration: 1,
+      },
+    },
+    hidden: {
+      opacity: 0,
+      x: 0,
+    },
+  };
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className={classes.container}
+    >
+      <h2>Framer Motion animation</h2>
+      <Link to="/button">
+        <motion.button
+          whileHover={{ backgroundColor: '#000' }}
+          transition={{ duration: 0.5 }}
+          className={classes.button}
+        >
+          Go to Button Showcase
+        </motion.button>
+      </Link>
+    </motion.div>
+  );
+};
+```
+
+## Orchestration
+
+Orchestration can schedule the animation of parent and child component like delay and stagger.
+
+```js
+const Home = () => {
+  const containerVariants = {
+    visible: {
+      opacity: 1,
+      x: 100,
+      transition: {
+        duration: 1,
+        when: 'beforeChildren', // child component will animate after parent complete animation
+        staggerChildren: 0.5, // each child has delay 0.5 second before next child animates.
+      },
+    },
+    hidden: {
+      opacity: 0,
+      x: 0,
+    },
+  };
+
+  const childVariants = {
+    visible: {
+      opacity: 1,
+    },
+    hidden: {
+      opacity: 0,
+    },
+  };
+
+  return (
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      animate="visible"
+      className={classes.container}
+    >
+      <h2>Framer Motion animation</h2>
+      <motion.p variants={childVariants}>Child 1</motion.p>
+      <motion.p variants={childVariants}>Child 2</motion.p>
+      <Link to="/button">
+        <motion.button
+          variants={childVariants}
+          whileHover={{ backgroundColor: '#000' }}
+          transition={{ duration: 0.5 }}
+          className={classes.button}
+        >
+          Go to Button Showcase
+        </motion.button>
+      </Link>
+    </motion.div>
+  );
+};
+```
