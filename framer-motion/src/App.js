@@ -1,17 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 
 import Home from './pages/Home';
 import Button from './pages/Button';
 
 function App() {
+  const location = useLocation();
+
   return (
-    <Router>
-      <Switch>
+    <AnimatePresence>
+      <Switch location={location} key={location.key}>
         <Route path="/button" component={Button} />
         <Route path="/" exact component={Home} />
       </Switch>
-    </Router>
+    </AnimatePresence>
   );
 }
 

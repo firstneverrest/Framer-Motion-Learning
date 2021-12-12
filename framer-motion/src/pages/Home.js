@@ -9,7 +9,8 @@ const Home = () => {
       opacity: 1,
       x: 100,
       transition: {
-        duration: 1,
+        delay: 0.5,
+        duration: 0.5,
         when: 'beforeChildren',
         staggerChildren: 0.5,
       },
@@ -17,6 +18,10 @@ const Home = () => {
     hidden: {
       opacity: 0,
       x: 0,
+    },
+    exit: {
+      opacity: 0,
+      transition: { duration: 0.5, ease: 'easeInOut' },
     },
   };
 
@@ -50,19 +55,20 @@ const Home = () => {
       variants={containerVariants}
       initial="hidden"
       animate="visible"
+      exit="exit"
       className={classes.container}
     >
       <h2>Framer Motion animation</h2>
       <motion.p variants={childVariants}>content 1</motion.p>
       <motion.p variants={childVariants}>content 2</motion.p>
       <Link to="/button">
-        <motion.button variants={childVariants}>Next Page</motion.button>
+        <motion.button variants={childVariants}>Show Case Page</motion.button>
       </Link>
-      <motion.div
+      {/* <motion.div
         variants={circleVariants}
         animate="circle"
         className={classes.circle}
-      ></motion.div>
+      ></motion.div> */}
     </motion.div>
   );
 };
