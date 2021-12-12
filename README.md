@@ -274,3 +274,36 @@ const Button = () => {
 
 export default Button;
 ```
+
+## Animate Routes
+
+Animate when changing routes with animate presence.
+First, cover all routes with animate presence then use a hook from react router
+which is called `useLocation` to help framer motion knows when to animate.
+
+```js
+// App.js
+import React from 'react';
+import { Switch, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
+import Home from './pages/Home';
+import Button from './pages/Button';
+
+function App() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence>
+      <Switch location={location} key={location.key}>
+        <Route path="/button" component={Button} />
+        <Route path="/" exact component={Home} />
+      </Switch>
+    </AnimatePresence>
+  );
+}
+
+export default App;
+```
+
+After that, add exit property into your container component in each route.
