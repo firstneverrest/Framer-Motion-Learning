@@ -64,11 +64,14 @@ const Home = () => {
       <Link to="/button">
         <motion.button variants={childVariants}>Show Case Page</motion.button>
       </Link>
-      {/* <motion.div
+      <Link to="/logo">
+        <motion.button variants={childVariants}>SVG Page</motion.button>
+      </Link>
+      <motion.div
         variants={circleVariants}
         animate="circle"
         className={classes.circle}
-      ></motion.div> */}
+      ></motion.div>
     </motion.div>
   );
 };
