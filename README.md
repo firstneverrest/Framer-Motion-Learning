@@ -307,3 +307,48 @@ export default App;
 ```
 
 After that, add exit property into your container component in each route.
+
+## SVG animation
+
+Framer Motion allows animating svg with motion.path
+
+```js
+import React from 'react';
+import { motion } from 'framer-motion';
+import classes from './Logo.module.css';
+
+const pathVariants = {
+  initial: {
+    pathLength: 0,
+  },
+  animate: {
+    pathLength: 1,
+    transition: {
+      duration: 4,
+      ease: 'easeInOut',
+      yoyo: Infinity,
+    },
+  },
+};
+
+const Logo = () => {
+  return (
+    <div className={classes.container}>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+        <motion.path
+          d="M14.4495 ..."
+          fill="transparent"
+          strokeWidth="0.5"
+          stroke="#fff"
+          strokeLinecap="round"
+          variants={pathVariants}
+          initial="initial"
+          animate="animate"
+        />
+      </svg>
+    </div>
+  );
+};
+
+export default Logo;
+```
