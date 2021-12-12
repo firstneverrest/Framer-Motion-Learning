@@ -39,8 +39,8 @@ const Home = () => {
         duration: 4,
         times: [0, 0.2, 0.5, 0.8, 1],
         // yoyo: Infinity,
-        repeat: Infinity,
-        repeatDelay: 1,
+        // repeat: Infinity,
+        // repeatDelay: 1,
       },
     },
   };
@@ -53,6 +53,11 @@ const Home = () => {
       className={classes.container}
     >
       <h2>Framer Motion animation</h2>
+      <motion.p variants={childVariants}>content 1</motion.p>
+      <motion.p variants={childVariants}>content 2</motion.p>
+      <Link to="/button">
+        <motion.button variants={childVariants}>Next Page</motion.button>
+      </Link>
       <motion.div
         variants={circleVariants}
         animate="circle"

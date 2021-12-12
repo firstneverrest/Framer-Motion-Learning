@@ -1,0 +1,14 @@
+.container {
+  margin: 2rem 3rem;
+}
+
+button {
+  padding: 1rem 2rem;
+  background-color: #4b3869;
+  color: #fff;
+  font-family: inherit;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
